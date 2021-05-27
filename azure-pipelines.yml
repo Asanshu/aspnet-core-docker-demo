@@ -5,11 +5,11 @@ trigger:
 variables:
   buildConfiguration: 'Release'
   location: 'West US 2'
-  acrHostName: 'cswebappdocker004acr.azurecr.io'
-  acrName: 'cswebappdocker004acr'
-  rgName: 'cswebappdocker004-rg'
-  imageName: 'cswebappdocker004'
-  webAppName: 'cswebappdocker004'
+  acrHostName: 'cswebappdocker100acr.azurecr.io'
+  acrName: 'cswebappdocker100acr'
+  rgName: 'New-RG'
+  imageName: 'cswebappdocker100'
+  webAppName: 'cswebappdocker100'
 
 stages:
 
@@ -25,7 +25,7 @@ stages:
     - task: AzureResourceGroupDeployment@2
       displayName: 'Azure Deployment:Create Azure Container Registry'
       inputs:
-        azureSubscription: 'AzureSC'
+        azureSubscription: 'Azure-newsc'
         resourceGroupName: '$(rgName)'
         location: $(location)
         csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
@@ -74,7 +74,7 @@ stages:
     - task: Docker@1
       displayName: 'Build container image'
       inputs:
-        azureSubscriptionEndpoint: 'AzureSC'
+        azureSubscriptionEndpoint: 'Azure-newsc'
         azureContainerRegistry: '$(acrHostName)'
         imageName: '$(imageName):$(Build.BuildId)'
         useDefaultContext: false
@@ -84,7 +84,7 @@ stages:
     - task: Docker@1
       displayName: 'Push container image'
       inputs:
-        azureSubscriptionEndpoint: 'AzureSC'
+        azureSubscriptionEndpoint: 'Azure-newsc'
         azureContainerRegistry: '$(acrHostName)'
         command: 'Push an image'
         imageName: '$(imageName):$(Build.BuildId)'

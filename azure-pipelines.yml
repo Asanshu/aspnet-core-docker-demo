@@ -5,8 +5,8 @@ trigger:
 variables:
   buildConfiguration: 'Release'
   location: 'West US 2'
-  acrHostName: 'cswebappdocker100ashuacr.azurecr.io'
-  acrName: 'cswebappdocker100acr'
+  acrHostName: 'cswebappdocker100akanshuacr.azurecr.io'
+  acrName: 'cswebappdocker100akanshuacr'
   rgName: 'New-RG'
   imageName: 'cswebappdocker100'
   webAppName: 'cswebappdocker100'

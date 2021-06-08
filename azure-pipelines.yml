@@ -4,12 +4,12 @@ trigger:
     - master
 variables:
   buildConfiguration: 'Release'
-  location: 'West US 2'
-  acrHostName: 'cswebappdocker100akanshuacr.azurecr.io'
-  acrName: 'cswebappdocker100akanshuacr'
+  location: 'East US'
+  acrHostName: 'myapptest2021ashu.azurecr.io'
+  acrName: 'myapptest2021ashu'
   rgName: 'New-RG'
-  imageName: 'cswebappdocker100'
-  webAppName: 'cswebappdocker100'
+  imageName: 'myapptest2021'
+  webAppName: 'myapptest2021'
 
 stages:
 
@@ -91,9 +91,9 @@ stages:
 
     # Copy ARM templates
     - task: CopyFiles@2
-      displayName: 'Copy ARM templates'
+      displayName: 'Copy AKS Deployment Yaml'
       inputs:
-        SourceFolder: ArmTemplates
+        SourceFolder: AKS
         TargetFolder: '$(build.artifactstagingdirectory)'
 
     # Publish the app as an artifact
